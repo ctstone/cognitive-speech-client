@@ -4,3 +4,4 @@ src/environment.json
 .vscode
 log
 *.log
+*.tgz
