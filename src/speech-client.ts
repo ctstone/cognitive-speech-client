@@ -50,6 +50,8 @@ export interface RecognizedSpeech {
   scenario: string;
 }
 
+export const BING_SPEECH_ENDPOINT = 'https://speech.platform.bing.com/recognize';
+
 type RequestAPI = request.RequestAPI<request.Request, request.CoreOptions, request.RequiredUriUrl>;
 
 const GLOBAL_APP_ID = '31b3d95b-af74-4550-9619-de76fe33f0f0';
@@ -59,7 +61,7 @@ export class SpeechClient {
   private request: RequestAPI;
   private instanceId = uuid.v4();
 
-  constructor(endpoint: string, private auth: SpeechAuthClient) {
+  constructor(private auth: SpeechAuthClient, endpoint = BING_SPEECH_ENDPOINT) {
     this.request = request.defaults({
       baseUrl: endpoint,
       qs: {

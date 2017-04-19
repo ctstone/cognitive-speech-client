@@ -1,10 +1,11 @@
 import nock = require('nock');
+import { BING_SPEECH_ENDPOINT } from './speech-client';
 
 export class MockSpeechService {
   authScope: nock.Scope;
   scope: nock.Scope;
 
-  constructor(private endpoint: string, region = '') {
+  constructor(private endpoint = BING_SPEECH_ENDPOINT, region = '') {
     region = region ? `${region}.` : '';
     this.authScope = nock(`https://${region}api.cognitive.microsoft.com`);
     this.scope = nock(endpoint);
